@@ -7,7 +7,7 @@ pipeline{
     stage('Build') {
       steps {
 	sh 'rm -rf *.war'
-        sh 'jar -cvf target/static-website.war -C "my-static-website/src/main/webapp" .'     
+        sh 'jar -cvf target/static-website.war -C "src/main/webapp" .'     
         sh 'docker build -t josephadarsh/ait670-app:v1.0 .'
       }
     }
