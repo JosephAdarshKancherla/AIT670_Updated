@@ -24,8 +24,8 @@ pipeline{
         stage("deploying on k8")
 	{
 		steps{
-			sh 'kubectl set image deployment/ait670-deployment-deployment container-0=josephadarsh/myapp1:v1.0 -n default'
-			sh 'kubectl rollout restart deploy ait670-deployment-deployment -n default'
+			sh 'kubectl set image deployment/ait670-deployment container-0=josephadarsh/myapp1:v1.0 -n default'
+			sh 'kubectl rollout restart deploy ait670-deployment -n default'
 		}
 	} 
   }
