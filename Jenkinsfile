@@ -8,7 +8,7 @@ pipeline{
       steps {
 	sh 'rm -rf *.war'
         sh 'jar -cvf target/static-website.war -C "src/main/webapp" .'     
-        sh 'docker build -t josephadarsh/ait670-app:v1.0 .'
+        sh 'docker build -t josephadarsh/myapp1:v1.0 .'
       }
     }
     stage('Login') {
@@ -18,13 +18,13 @@ pipeline{
     }
     stage("Push image to docker hub"){
       steps {
-        sh 'docker push josephadarsh/myapp:v1.0'
+        sh 'docker push josephadarsh/myapp1:v1.0'
       }
     }
         stage("deploying on k8")
 	{
 		steps{
-			sh 'kubectl set image deployment/ait670-deployment-deployment container-0=josephadarsh/myapp:v1.0 -n default'
+			sh 'kubectl set image deployment/ait670-deployment-deployment container-0=josephadarsh/myapp1:v1.0 -n default'
 			sh 'kubectl rollout restart deploy ait670-deployment-deployment -n default'
 		}
 	} 
